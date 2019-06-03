@@ -5,7 +5,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.UUID;
 
-import org.apache.http.client.methods.HttpGet;
+
 import utils.*;
 
 /**
@@ -14,9 +14,10 @@ import utils.*;
  * Dregs_2
  */
 public class Images {
-    final static String ROOTDIR = "E:\\图片\\code_download_images\\";
+    static String ROOTDIR;
     static File _file;
-    public static boolean mkdir_exists(String inurl,String dir){
+    public static boolean mkdir_exists(String ROOTDIR_,String inurl,String dir){
+        ROOTDIR = ROOTDIR_;
         _file = new File(ROOTDIR+dir);
         if(!_file.exists())
             _file.mkdir();
@@ -27,7 +28,10 @@ public class Images {
         //HttpGet
         try {
             URL url = new URL(inurl);
-            File file = new File(ROOTDIR+dir+"\\"+UUID.randomUUID().toString()+".jpg");
+
+            String path = url.getPath();
+            String[] split = path.split("/");
+            File file = new File(ROOTDIR+dir+"\\"+url.getHost()+split[split.length-1].split("\\.")[0]+".jpg");
             URLConnection connection = url.openConnection();
             connection.setConnectTimeout(5 * 1000);
             BufferedInputStream input = new BufferedInputStream(connection.getInputStream());

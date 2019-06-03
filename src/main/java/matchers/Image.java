@@ -22,10 +22,21 @@ public class Image {
         return strings;
     }
     private static void match(String context){
-        Pattern compile = Pattern.compile("https.*.jpg\"\\star");
+        boolean flag = false;
+        //对于不同日期的网页，切换以下两种匹配规则进行爬取
+        //Pattern compile = Pattern.compile("https.*.jpg\"\\star");
+        Pattern compile = Pattern.compile("k\"\\shref=\"https.*.jpg");
         Matcher matcher = compile.matcher(context);
         while (matcher.find()){
-            strings.add(matcher.group().split("\"")[0]);
+            flag = true;
+            strings.add(matcher.group().split("\"")[2]);
+        }
+        if(!flag){
+            Pattern compile_ = Pattern.compile("https.*.jpg\"\\star");
+            Matcher matcher_ = compile_.matcher(context);
+            while (matcher_.find()){
+                strings.add(matcher_.group().split("\"")[0]);
+            }
         }
     }
 }
