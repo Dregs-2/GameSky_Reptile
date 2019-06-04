@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * Dregs_2
  */
 public class Image {
-    static ArrayList<String> strings;
+    static ArrayList<String> strings;//
     public static List<String> getImageUrls(String context){
         strings = new ArrayList<String>();
         String[] split = context.split("\n");
