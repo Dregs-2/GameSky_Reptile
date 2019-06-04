@@ -39,7 +39,7 @@ public class Pages {
         if(matcher.find()){
             String[] split = matcher.group().split("</a>");
             for(String str : split){
-                Matcher matcher1 = Pattern.compile("https.*.shtml").matcher(str);
+                Matcher matcher1 = Pattern.compile("http.*.shtml").matcher(str);
                 if(matcher1.find()){
                     String newstr = matcher1.group();
                     map.put(Integer.parseInt(str.split("\">")[1]),newstr);
