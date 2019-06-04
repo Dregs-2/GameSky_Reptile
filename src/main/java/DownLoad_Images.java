@@ -36,15 +36,15 @@ public class DownLoad_Images {
         String code = HTML_XML.getXMLCode(URL);
         List<String> pages = Pages.getPage(code);
         for(String page : pages){
-            for(String image : Image.getImageUrls(HTML_XML.getXMLCode(page))){
+            for(String image : Image.getImageUrls(HTML_XML.getXMLCode("https:"+page.split(":")[1]))){
                 System.out.println(image);
                 Images.mkdir_exists(ROOTDIR,image.split("\\?")[1],DIR);
             }
         }
-        List<String> images = Image.getImageUrls(code);
-        for(String image : images){
-            Images.mkdir_exists(ROOTDIR,image,"1");
-        }
+        //List<String> images = Image.getImageUrls(code);
+        //for(String image : images){
+        //    Images.mkdir_exists(ROOTDIR,image,"1");
+        //}
         /**
          * 清除多余小文件
          */

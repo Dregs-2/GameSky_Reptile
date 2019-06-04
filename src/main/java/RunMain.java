@@ -8,10 +8,6 @@ import java.util.Properties;
 
 public class RunMain {
     public static void main(String[] args) throws IOException {
-        //String relativelyPath=System.getProperty("user.dir");
-        //FileInputStream fileinput = new FileInputStream(new File(relativelyPath+ "/gamesky_mainpageurl.properties"));
-        //Properties properties = new Properties();
-        //FileWriter writer = new FileWriter(new File("D:\\RunMain\\properties\\gamesky_mainpageurl.properties"));
         if("0".equals(args[0])){
             for (String str : HomePages.getUrl()){
                 String[] splits = str.split("/");
@@ -27,16 +23,5 @@ public class RunMain {
             System.out.println("参数二：存储图片的根目录结尾加/");
             System.out.println("参数三：参数一为0时不需要填，参数一为1时填入要下载的单期链接\n");
         }
-
-
-
-
-
-        //properties.store(writer,"date+url");
-        //writer.flush();
-        //writer.close();
-        //properties.load(fileinput);
-        //for (String str : properties.stringPropertyNames())
-        //DownLoad_Images.mian(new String[]{properties.getProperty(str),str,args[0]});
     }
 }
