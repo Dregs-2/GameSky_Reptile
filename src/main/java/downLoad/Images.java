@@ -25,7 +25,6 @@ public class Images {
     }
 
     static boolean download(String inurl,String dir){
-        //HttpGet
         try {
             URL url = new URL(inurl);
 

@@ -37,7 +37,10 @@ public class DownLoad_Images {
         List<String> pages = Pages.getPage(code);
         for(String page : pages){
             for(String image : Image.getImageUrls(HTML_XML.getXMLCode("https:"+page.split(":")[1]))){
-                System.out.println(image);
+                if (RunMain.bool)
+                    System.out.print("-");
+                else
+                    System.out.println(image);
                 Images.mkdir_exists(ROOTDIR,image.split("\\?")[1],DIR);
             }
         }
